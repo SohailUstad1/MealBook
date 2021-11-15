@@ -10,7 +10,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Praise&family=Roboto:wght@300&display=swap');
 
         .nav-bar ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
             list-style: none;
+            padding: 0;
+            white-space: nowrap;
+        }
+
+        .nav-bar ul li h1 {
             font-family: 'Praise', cursive;
             font-family: 'Roboto', sans-serif;
             font-family: 'Praise', cursive;
@@ -19,6 +27,57 @@
 
             font-family: 'Roboto', sans-serif;
             font-family: cursive;
+        }
+
+        .nav-bar ul li {
+            padding-left: 20px;
+        }
+
+        .button {
+            padding: 8px;
+            background-color: green;
+            border-radius: 7px;
+            color: white;
+
+            font-size: large;
+        }
+
+        .gray-button {
+            background-color: silver;
+            color: black;
+        }
+
+        .burlywood-button {
+            background-color: burlywood;
+            color: black;
+        }
+
+        #menu {
+            display: none;
+        }
+
+        @media screen and (max-width: 700px) {
+            .nav-bar ul .menu {
+                display: none;
+                list-style: none;
+            }
+
+            .nav-bar ul li {
+                padding-left: 3%;
+            }
+
+            .button {
+                padding: 8px;
+                background-color: green;
+                border-radius: 7px;
+                color: white;
+
+                font-size: large;
+            }
+
+            #menu {
+                display: inline;
+            }
         }
     </style>
     <title>MealBook</title>
@@ -30,8 +89,63 @@
             <li>
                 <h1>MealBook</h1>
             </li>
+            <li class="menu">
+                <h3><button class="button">Features</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button">Restaurants</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button">Groups</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button">Pricing</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button">Resources</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button burlywood-button">Request Demo</button></h3>
+            </li>
+            <li class="menu">
+                <h3><button class="button gray-button">Resources</button></h3>
+            </li>
+            <li id="menu">
+                <h4><button class="button" onclick="showMenu()">Menu</button></h3>
+            </li>
         </ul>
     </div>
+
+    <!-- script -->
+    <script>
+        i = 0;
+        function showMenu() {
+            if (i == 0) {
+                var menu = document.querySelector("ul");
+                var menu1 = document.querySelectorAll(".menu");
+                menu.style.display = "flex";
+                menu.style.flexDirection = "column";
+                menu.style.justifyContent = "flex-start";
+                for (i = 0; i < menu1.length; i++) {
+
+                    menu1[i].style.display = "flex";
+                    menu1[i].style.flexDirection = "column";
+                    menu1[i].style.justifyContent = "flex-start";
+                }
+                i = 1;
+            } else {
+                var menu1 = document.querySelectorAll(".menu");
+                for (i = 0; i < menu1.length; i++) {
+
+                    menu1[i].style.display = "none";
+                    menu1[i].style.flexDirection = "column";
+                    menu1[i].style.justifyContent = "flex-start";
+                }
+                i = 0;
+            }
+
+        }
+    </script>
 </body>
 
 </html>
